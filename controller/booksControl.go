@@ -64,7 +64,7 @@ func AddBook(w http.ResponseWriter, r *http.Request) {
 	}
 	json.NewDecoder(r.Body).Decode(&book)
 
-	if book.Name == "" {
+	if book.Name == "" || book.AuthorName == "" {
 		http.Error(w, "book_name or author_name empty", http.StatusBadRequest)
 
 	} else {
